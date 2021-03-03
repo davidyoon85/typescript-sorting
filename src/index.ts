@@ -9,12 +9,11 @@ import { LinkedList } from "./LinkedList";
 // sorter.sort();
 // console.log(sorter.collection);
 
-const linkedList = new LinkedList();
-linkedList.add(500);
-linkedList.add(-10);
-linkedList.add(-3);
-linkedList.add(4);
+// const linkedList = new LinkedList();
+// linkedList.add(500);
+// linkedList.add(-10);
+// linkedList.add(-3);
+// linkedList.add(4);
 
-const sorter = new Sorter(linkedList);
-sorter.sort();
-linkedList.print();
+// sorter.sort();
+// linkedList.print();
