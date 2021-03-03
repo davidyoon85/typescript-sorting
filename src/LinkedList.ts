@@ -1,40 +1,38 @@
 class Node {
     next: Node | null = null;
 
-    constructor(public value: number) {}
+    constructor(public data: number) {}
 }
 
 export class LinkedList {
     head: Node | null = null;
 
-    add(value: number): void {
-        let newNode = new Node(value);
+    add(data: number): void {
+        const node = new Node(data);
 
         if (!this.head) {
-            this.head = newNode;
+            this.head = node;
             return;
         }
 
         let tail = this.head;
-
         while (tail.next) {
             tail = tail.next;
         }
 
-        tail.next = newNode;
+        tail.next = node;
     }
 
-    length(): number {
+    get length(): number {
         if (!this.head) {
             return 0;
         }
 
         let length = 1;
-        let current = this.head;
-
-        while (current.next) {
+        let node = this.head;
+        while (node.next) {
             length++;
-            current = current.next;
+            node = node.next;
         }
 
         return length;
@@ -42,39 +40,38 @@ export class LinkedList {
 
     at(index: number): Node {
         if (!this.head) {
-            throw new Error("Index out of bounds!");
+            throw new Error("Index out of bounds");
         }
 
         let counter = 0;
-        let current: Node | null = this.head;
-
-        while (current) {
+        let node: Node | null = this.head;
+        while (node) {
             if (counter === index) {
-                return current;
+                return node;
             }
 
             counter++;
-            current = current.next;
+            node = node.next;
         }
 
-        throw new Error("Index out of bounds!");
+        throw new Error("Index out of bounds");
     }
 
-    compare(leftIndex: number, rightIndex: number) {
+    compare(leftIndex: number, rightIndex: number): boolean {
         if (!this.head) {
-            throw new Error("List is empty!");
+            throw new Error("List is empty");
         }
 
-        return this.at(leftIndex).value > this.at(rightIndex).value;
+        return this.at(leftIndex).data > this.at(rightIndex).data;
     }
 
     swap(leftIndex: number, rightIndex: number): void {
-        let leftNode = this.at(leftIndex);
-        let rightNode = this.at(rightIndex);
+        const leftNode = this.at(leftIndex);
+        const rightNode = this.at(rightIndex);
 
-        let temp = leftNode.value;
-        leftNode.value = rightNode.value;
-        rightNode.value = temp;
+        const leftHand = leftNode.data;
+        leftNode.data = rightNode.data;
+        rightNode.data = leftHand;
     }
 
     print(): void {
@@ -82,11 +79,10 @@ export class LinkedList {
             return;
         }
 
-        let current: Node | null = this.head;
-
-        while (current) {
-            console.log(current);
-            current = current.next;
+        let node: Node | null = this.head;
+        while (node) {
+            console.log(node.data);
+            node = node.next;
         }
     }
 }
